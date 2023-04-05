@@ -8,7 +8,6 @@ namespace AlmisAssessment
     {
         public AppDelegate()
         {
-            /*caret*/
         }
 
         public override void DidFinishLaunching(NSNotification notification)

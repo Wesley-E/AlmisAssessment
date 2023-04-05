@@ -6,6 +6,7 @@ namespace AlmisAssessment
 {
     public partial class ViewController : NSViewController
     {
+        private int numberOfTimesClicked = 0;
         public ViewController(IntPtr handle) : base(handle)
         {
         }
@@ -14,7 +15,13 @@ namespace AlmisAssessment
         {
             base.ViewDidLoad();
 
-            // Do any additional setup after loading the view.
+            ClickedLabel.StringValue = "Button not clicked";
+        }
+
+        partial void ClickedButton(NSObject sender)
+        {
+            ClickedLabel.StringValue =
+                $"The button has been clicked {++numberOfTimesClicked} time{(numberOfTimesClicked < 2 ? "" : "s")}.";
         }
 
         public override NSObject RepresentedObject
