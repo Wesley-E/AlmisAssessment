@@ -13,6 +13,7 @@
         <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
         <TargetFrameworkIdentifier>Xamarin.Mac</TargetFrameworkIdentifier>
         <MonoMacResourcePrefix>Resources</MonoMacResourcePrefix>
+        <LangVersion>9</LangVersion>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
         <DebugSymbols>true</DebugSymbols>
@@ -163,6 +164,9 @@
         <Compile Include="Models\Product\Products.cs" />
         <Compile Include="Models\Product\Term.cs" />
         <Compile Include="Models\Repository\RepositoryProduct.cs" />
+        <Compile Include="Models\Controls\Products.cs" />
+        <Compile Include="Models\Controls\ProductTableDataSource.cs" />
+        <Compile Include="Models\Controls\ProductTableDelegate.cs" />
         <Compile Include="Repository\IRepository.cs" />
         <Compile Include="Repository\Repository.cs" />
         <Compile Include="Services\IProductService.cs" />
@@ -187,7 +191,8 @@
       <Analyzer Include="..\packages\xunit.analyzers.1.0.0\analyzers\dotnet\cs\xunit.analyzers.fixes.dll" />
     </ItemGroup>
     <ItemGroup>
-      <Content Include="Configuration\appsettings.json" />
+      <EmbeddedResource Include="Configuration\appsettings.json" />
+      <Content Include="README.md" />
       <Content Include="Resources\products.json" />
     </ItemGroup>
     <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />

@@ -12,19 +12,18 @@ namespace AlmisAssessment.Configuration
         private const string Namespace = "AlmisAssessment.Configuration";
         private const string Filename = "appsettings.json";
 
-        private AppSettingsManager()
+        public AppSettingsManager()
         {
             var assembly = typeof(AppSettingsManager).GetTypeInfo().Assembly;
+            var output = this.GetType().Assembly.GetManifestResourceNames();
             var stream = assembly.GetManifestResourceStream($"{Namespace}.{Filename}");
-            using (var reader = new StreamReader(stream ?? throw new 
-                       FileNotFoundException($"{Filename} not found in {Namespace}")))
-            {
-                var json = reader.ReadToEnd();
-                _secrets = new JObject(json);
-            }
+            using var reader = new StreamReader(stream ?? throw new 
+                FileNotFoundException($"{Filename} not found in {Namespace}"));
+            var json = reader.ReadToEnd();
+            _secrets = JObject.Parse(json);
         }
 
-        public static AppSettingsManager Settings => _instance ?? (_instance = new AppSettingsManager());
+        public static AppSettingsManager Settings => _instance ??= new AppSettingsManager();
 
         public string this[string name]
         {

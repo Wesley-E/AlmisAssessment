@@ -15,9 +15,9 @@ namespace AlmisAssessment.Models.Product
         {
             var originalPeriod = new Period((int)Period.Days, (int)Period.Weeks, Period.Months, Period.Years);
             var totalCompletedPeriods = 0;
-            while (Period.CompletionDayIndex(fromDate) <= investmentPeriod.CompletionDayIndex(fromDate))
+            while (originalPeriod.CompletionDayIndex(fromDate) <= investmentPeriod.CompletionDayIndex(fromDate))
             {
-                Period.AddPeriod(originalPeriod);
+                originalPeriod.AddPeriod(Period);
                 totalCompletedPeriods += 1;
             }
 
